@@ -5,6 +5,7 @@
 #define ServoDecode_H
 
 #include <inttypes.h>
+#include <Arduino.h>
 //#include <wiring.h> //removed for 0012
 typedef uint8_t byte;
 
