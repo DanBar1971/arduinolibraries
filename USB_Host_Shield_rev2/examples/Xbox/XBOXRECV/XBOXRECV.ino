@@ -10,7 +10,7 @@ USB Usb;
 XBOXRECV Xbox(&Usb);
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(57600);
   if (Usb.Init() == -1) {
     Serial.print(F("\r\nOSC did not start"));
     while(1); //halt
