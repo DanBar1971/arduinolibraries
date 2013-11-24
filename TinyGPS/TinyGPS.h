@@ -2,7 +2,8 @@
 TinyGPS - a small GPS library for Arduino providing basic NMEA parsing
 Based on work by and "distance_to" and "course_to" courtesy of Maarten Lamers.
 Suggestion to add satellites(), course_to(), and cardinal(), by Matt Monson.
-Copyright (C) 2008-2012 Mikal Hart
+Precision improvements suggested by Wayne Holder.
+Copyright (C) 2008-2013 Mikal Hart
 All rights reserved.
 
 This library is free software; you can redistribute it and/or
@@ -29,7 +30,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "WProgram.h"
 #endif
 
-#define _GPS_VERSION 12 // software version of this library
+#include <stdlib.h>
+
+#define _GPS_VERSION 13 // software version of this library
 #define _GPS_MPH_PER_KNOT 1.15077945
 #define _GPS_MPS_PER_KNOT 0.51444444
 #define _GPS_KMPH_PER_KNOT 1.852
@@ -54,7 +57,8 @@ public:
   bool encode(char c); // process one character received from GPS
   TinyGPS &operator << (char c) {encode(c); return *this;}
 
-  // lat/long in hundred thousandths of a degree and age of fix in milliseconds
+  // lat/long in MILLIONTHs of a degree and age of fix in milliseconds
+  // (note: versions 12 and earlier gave lat/long in 100,000ths of a degree.
   void get_position(long *latitude, long *longitude, unsigned long *fix_age = 0);
 
   // date as ddmmyy, time as hhmmsscc, and age in milliseconds
