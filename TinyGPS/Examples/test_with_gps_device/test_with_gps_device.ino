@@ -18,7 +18,7 @@ static void print_str(const char *str, int len);
 
 void setup()
 {
-  Serial.begin(115200);
+  Serial.begin(57600);
   
   Serial.print("Testing TinyGPS library v. "); Serial.println(TinyGPS::library_version());
   Serial.println("by Mikal Hart");
@@ -27,7 +27,7 @@ void setup()
   Serial.println("          (deg)     (deg)      Age                      Age  (m)    --- from GPS ----  ---- to London  ----  RX    RX        Fail");
   Serial.println("-------------------------------------------------------------------------------------------------------------------------------------");
 
-  ss.begin(4800);
+  ss.begin(57600);
 }
 
 void loop()
